@@ -8,8 +8,8 @@ const Form = () => {
   const [editItem, setEditItem] = useState(false);
   const [editId, setEditId] = useState("");
   const [search, setSearch] = useState();
-  const [filteredTodo, setFilteredTodo] = useState([])
-  const [select, setSelect] = useState('')
+  const [filteredTodo, setFilteredTodo] = useState([]);
+  const [select, setSelect] = useState("");
   //form input
   const inputItem = (e) => {
     const searchText = e.target.value;
@@ -43,7 +43,7 @@ const Form = () => {
       // setName('')
       setEditId("");
       setEditItem(false);
-      setinput('')
+      setinput("");
     }
   };
   //edit item
@@ -55,30 +55,29 @@ const Form = () => {
     setinput(filter.title);
   };
   //search field
- 
+
   useEffect(() => {
-
-    if(search !== ''){
-      let searchTodo =  todos.filter(todo => {
-        return Object.values(todo).some(name => String(name).toLowerCase().includes(search.toLowerCase()))
-    })
-    setTodos(searchTodo)
-    }else{
-      setTodos(todos)
+    if (search !== "") {
+      let searchTodo = todos.filter((todo) => {
+        return Object.values(todo).some((name) =>
+          String(name).toLowerCase().includes(search.toLowerCase())
+        );
+      });
+      setTodos(searchTodo);
+    } else {
+      setTodos(todos);
     }
-   
-}, [search])
- //select field
- const handleSelect =(e)=>{
-  setSelect(e.target.value)
-  console.log( todos,select );
-  //completed task
-
- }
+  }, [search]);
+  //select field
+  const handleSelect = (e) => {
+    setSelect(e.target.value);
+    console.log(todos, select);
+    //completed task
+  };
   return (
     <div className="wrapper">
       <header>Todo App</header>
-      <form  className="inputField" onSubmit={submitItem}>
+      <form className="inputField" onSubmit={submitItem}>
         <input
           className="inputField"
           type="text"
@@ -87,11 +86,10 @@ const Form = () => {
           required
           placeholder="Add your new todos"
         />
-        <button className="AddBtn" type="submit" >
+        <button className="AddBtn" type="submit">
           {editItem ? "Edit" : "Add"}
         </button>
       </form>
-     
 
       <div className="todos-list">
         <TodoList
@@ -101,7 +99,7 @@ const Form = () => {
           setinput={setinput}
           setTodos={setTodos}
           setSearch={setSearch}
-          handleSelect= {handleSelect}
+          handleSelect={handleSelect}
         />
       </div>
     </div>
