@@ -14,7 +14,7 @@ const Form = () => {
   const inputItem = (e) => {
     const searchText = e.target.value;
     setinput(searchText);
-    // console.log(input)
+    // console.log(input)tus
   };
 
   const submitItem = (e) => {
